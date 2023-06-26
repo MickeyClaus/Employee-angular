@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+// Basic imports
+// Reset + modify styles
+@import url("assets/styles/reset.scss");
+// Grid system
+@import url("assets/styles/flex-grid.scss");
+// Default elements
+@import url("assets/styles/default.scss");
+// Helper classes
+@import url("assets/styles/atomic.scss");
+
+@font-face {
+    font-family: "Moscow Sans";
+    src: url("./assets/fonts/2930-font.ttf") format("opentype");
+  }
+
+html, body { height: 100%; }
+body { margin: 0;  }
+body *{font-family: "Moscow Sans";}
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    }
+
+// SCROLL STYLE
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #d5d5d5;
+    border-radius: 60px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #979797;
+    border-radius: 60px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  

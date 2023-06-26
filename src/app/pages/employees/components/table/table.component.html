@@ -1,0 +1,179 @@
+<mat-paginator
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page"
+>
+</mat-paginator>
+<table
+  *ngIf="!mobileTable"
+  mat-table
+  [dataSource]="dataSource"
+  class="mat-elevation-z8 main-table"
+>
+  <ng-container matColumnDef="move">
+    <th mat-header-cell *matHeaderCellDef>Действия</th>
+    <td mat-cell *matCellDef="let element">
+      <img src="../../../../../assets/icons/dots.svg" alt="" />
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="login">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        (change)="$event ? toggleAllRows() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+        [aria-label]="checkboxLabel()"
+      >
+      </mat-checkbox>
+      Логин
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)"
+        [aria-label]="checkboxLabel(row)"
+      >
+      </mat-checkbox>
+      {{ row.name }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>E-mail</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef>Телефон</th>
+    <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef>Роли</th>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="element.is_admin">Пользователь</span>
+      <span *ngIf="!element.is_admin">Администратор</span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="changeDate">
+    <th mat-header-cell *matHeaderCellDef>Дата изменения</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.update_at | date : "dd.MM.y" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="createDate">
+    <th mat-header-cell *matHeaderCellDef>Дата создания</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.create_at | date : "dd.MM.y" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Статус</th>
+    <td mat-cell *matCellDef="let element">
+      <span style="color: #25b553" *ngIf="element.status === 'ACTIVE'"
+        >Активен</span
+      >
+      <span style="color: #ff001f" *ngIf="element.status !== 'ACTIVE'"
+        >Заблокирован</span
+      >
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="payment">
+    <th mat-header-cell *matHeaderCellDef>Наличие ЭП</th>
+    <td mat-cell *matCellDef="let element">
+      <span style="color: #25b553" *ngIf="element.is_ecp"
+        ><mat-icon>check_circle_outline</mat-icon></span
+      >
+      <span style="color: #ff001f" *ngIf="!element.is_ecp"
+        ><mat-icon>cancel_outline</mat-icon></span
+      >
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    (click)="selection.toggle(row)"
+  ></tr>
+</table>
+<ng-container *ngIf="mobileTable">
+  <div class="mobile-table" *ngFor="let item of mobileData">
+    <div class="flex-sb-c mobile-table-col">
+      <div class="mobile-table-col-title">Действия</div>
+      <div class="mobile-table-col-info">
+        <img src="../../../../../assets/icons/dots.svg" alt="" />
+      </div>
+    </div>
+    <div class="flex-sb-c mobile-table-col">
+      <div class="mobile-table-col-title">Логин</div>
+      <div class="mobile-table-col-info">
+        {{ item.name }}
+      </div>
+    </div>
+    <div class="flex-sb-c mobile-table-col">
+      <div class="mobile-table-col-title">E-mail</div>
+      <div class="mobile-table-col-info">{{ item.email }}</div>
+    </div>
+    <div class="flex-sb-c mobile-table-col">
+      <div class="mobile-table-col-title">Телефон</div>
+      <div class="mobile-table-col-info">{{ item.phone }}</div>
+    </div>
+    <div class="flex-sb-c mobile-table-col">
+      <div class="mobile-table-col-title">Роли</div>
+      <div class="mobile-table-col-info">
+        <span *ngIf="item.is_admin">Пользователь</span>
+        <span *ngIf="!item.is_admin">Администратор</span>
+      </div>
+    </div>
+    <div class="flex-sb-c mobile-table-col">
+      <div class="mobile-table-col-title">Дата изменения</div>
+      <div class="mobile-table-col-info">
+        {{ item.update_at | date : "dd.MM.y" }}
+      </div>
+    </div>
+    <div class="flex-sb-c mobile-table-col">
+      <div class="mobile-table-col-title">Дата создания</div>
+      <div class="mobile-table-col-info">
+        {{ item.create_at | date : "dd.MM.y" }}
+      </div>
+    </div>
+    <div class="flex-sb-c mobile-table-col">
+      <div class="mobile-table-col-title">Статус</div>
+      <div class="mobile-table-col-info">
+        <span style="color: #25b553" *ngIf="item.status === 'ACTIVE'"
+          >Активен</span
+        >
+        <span style="color: #ff001f" *ngIf="item.status !== 'ACTIVE'"
+          >Заблокирован</span
+        >
+      </div>
+    </div>
+    <div class="flex-sb-c mobile-table-col">
+      <div class="mobile-table-col-title">Наличиие ЭП</div>
+      <div class="mobile-table-col-info">
+        <span style="color: #25b553" *ngIf="item.is_ecp"
+          ><mat-icon>check_circle_outline</mat-icon></span
+        >
+        <span style="color: #ff001f" *ngIf="!item.is_ecp"
+          ><mat-icon>cancel_outline</mat-icon></span
+        >
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<mat-paginator
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page"
+>
+</mat-paginator>

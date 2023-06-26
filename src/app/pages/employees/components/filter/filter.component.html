@@ -1,0 +1,88 @@
+<section class="filter">
+  <div class="container">
+    <div class="filter--title pt-4">
+      <p>Фильтр</p>
+    </div>
+    <form [formGroup]="employeeForm">
+      <div class="filter--inputs p-4">
+        <div class="form-group mt-4">
+          <label>Логин</label>
+          <input
+            class="default--input"
+            matInput
+            type="text"
+            formControlName="name"
+          />
+          <button
+            class="clear"
+            *ngIf="employeeForm.name"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="employeeForm.name = ''"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <div class="form-group mt-4">
+          <label>Телефон</label>
+          <input
+            class="default--input"
+            type="text"
+            matInput
+            formControlName="email"
+            phoneNumberFormat
+            placeholder=""
+          />
+        </div>
+        <div class="form-group mt-4">
+          <label>Дата создания</label>
+          <div style="height: 36px;" class="default--input flex-sb-c">
+            <input class="dt disabled-input" [matDatepicker]="datepickerB" type="text" />
+            <mat-datepicker-toggle matSuffix class="cal-button datepicker" [for]="datepickerB">
+            </mat-datepicker-toggle>
+        </div>
+        <mat-datepicker #datepickerB></mat-datepicker>
+        </div>
+        <div class="form-group mt-4">
+          <label>Статус</label>
+          <mat-select class="default--input w-100">
+            <mat-option> Активен </mat-option>
+            <mat-option> Заблокирован </mat-option>
+          </mat-select>
+        </div>
+        <div class="form-group mt-4">
+          <label>E-mail</label>
+          <input
+            class="default--input"
+            type="text"
+            formControlName="email"
+            placeholder=""
+          />
+        </div>
+        <div class="form-group mt-4">
+          <label>Роль</label>
+          <mat-select class="default--input w-100">
+            <mat-option> Активен </mat-option>
+            <mat-option> Заблокирован </mat-option>
+          </mat-select>
+        </div>
+        <div class="form-group mt-4">
+          <label>Дата изменения</label>
+          <div style="height: 36px;" class="default--input flex-sb-c">
+            <input class="dt disabled-input" [matDatepicker]="datepickerA" type="text"  />
+            <mat-datepicker-toggle matSuffix class="cal-button datepicker" [for]="datepickerA">
+            </mat-datepicker-toggle>
+        </div>
+        <mat-datepicker #datepickerA></mat-datepicker>
+        </div>
+      </div>
+    </form>
+
+    <div class="filter--buttons flex-fs-c mt-3 pb-3">
+      <button class="active--button flex-sb-c"><p>Применить</p></button>
+      <button class="deactive--button flex-sb-c"><p>Отмена</p></button>
+      <button class="deactive--button flex-sb-c"><p>Сбросить</p></button>
+    </div>
+  </div>
+</section>

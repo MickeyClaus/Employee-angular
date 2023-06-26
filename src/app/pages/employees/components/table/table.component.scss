@@ -1,0 +1,38 @@
+.mat-mdc-header-row {
+  background-color: #da2032 !important;
+  th {
+    color: white !important;
+    text-align: center;
+    border: none !important;
+  }
+}
+.mat-mdc-cell {
+  text-align: center;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.mobile-table {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mobile-table-col {
+  height: 52px;
+  width: 50%;
+  border: 1px solid #ccc;
+  background: white;
+  &-title {
+    padding: 8px;
+    width: 50%;
+  }
+  &-info {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  .mobile-table-col {
+    width: 100%;
+  }
+}

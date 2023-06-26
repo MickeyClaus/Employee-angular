@@ -1,0 +1,70 @@
+.back-btn {
+  color: #666f78;
+  border: none;
+  background: transparent;
+  font-weight: 500;
+}
+.title {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.active {
+  &--button {
+    background-color: #da2032;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-right: 12px;
+    padding: 6px 12px;
+    p {
+      font-size: 13px;
+      font-weight: 200;
+      margin: 0 5px 0;
+    }
+  }
+}
+
+.deactive {
+  &--button {
+    background-color: #ccc;
+    color: gray;
+    border: none;
+    border-radius: 8px;
+    margin-right: 12px;
+    padding: 6px 12px;
+    p {
+      font-size: 13px;
+      font-weight: 200;
+      margin: 0 5px 0;
+    }
+  }
+}
+
+.expandable {
+  overflow: hidden;
+  transition: height 300ms ease-in-out;
+}
+
+@media only screen and (max-width: 1024px){
+  .title {
+    font-size: 22px;
+    font-weight: 500;
+  }
+}
+
+
+@media only screen and (max-width: 768px){
+  .title-buttons {
+    display: block;
+    .filter-button{
+      margin-top: 12px;
+    }
+  }
+  .active-button-box{
+    flex-wrap: wrap;
+    button{
+      margin-top: 12px;
+    }
+  }
+}

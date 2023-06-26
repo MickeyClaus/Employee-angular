@@ -1,0 +1,93 @@
+.filter {
+  &--title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  &--inputs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    .form-group {
+      width: 23%;
+      label {
+        font-weight: bold;
+      }
+      margin-left: 20px;
+    }
+  }
+}
+
+.active {
+  &--button {
+    background-color: #da2032;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-right: 12px;
+    padding: 6px 12px;
+    p {
+      font-size: 13px;
+      font-weight: 200;
+      margin: 0 5px 0;
+    }
+  }
+}
+
+.deactive {
+  &--button {
+    background-color: #ccc;
+    color: gray;
+    border: none;
+    border-radius: 8px;
+    margin-right: 12px;
+    padding: 6px 12px;
+    p {
+      font-size: 13px;
+      font-weight: 200;
+      margin: 0 5px 0;
+    }
+  }
+}
+
+.form-group {
+  position: relative;
+  .clear {
+    position: absolute;
+    border: none;
+    right: 1%;
+    bottom: 5%;
+    border-radius: 28px;
+    height: 42%;
+    color: white;
+    background-color: #ccc;
+  }
+}
+
+.dt {
+  border: none;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  .form-group {
+    width: 29% !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .form-group {
+    width: 46% !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .form-group {
+    width: 100% !important;
+  }
+  .filter--buttons{
+    display: block;
+    button{
+      margin: 12px auto;
+    }
+  }
+}

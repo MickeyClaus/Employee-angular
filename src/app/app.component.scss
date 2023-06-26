@@ -1,0 +1,63 @@
+mat-toolbar {
+  background: #da2032;
+  color: white;
+  height: 70px !important;
+}
+
+mat-sidenav {
+  width: 200px;
+  border-right: none;
+  background: #666f78;
+  color: white;
+  padding: 16px;
+  text-align: center;
+}
+
+.content {
+  min-height: calc(100vh - 70px);
+  background-color: #f5f6f7;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 70px);
+}
+.user {
+  &--box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 70px !important ;
+  }
+  &--info {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0 5px;
+    p {
+      margin: 0;
+    }
+  }
+}
+
+mat-tree {
+  background-color: transparent;
+  color: white !important;
+  font-family: "Moscow Sans";
+}
+.mat-tree-node {
+  color: whitesmoke;
+  padding: 0 !important;
+  font-size: 12px;
+  border-bottom: 1px solid #ccc;
+}
+.mat-nested-tree-node {
+  color: white;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+
+}
+
+@media only screen and (max-width: 425px) and (min-width: 300px) {
+  mat-sidenav {
+    width: 100% !important;
+  }
+}
