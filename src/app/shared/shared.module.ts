@@ -4,26 +4,32 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { PhoneFormatPipe } from './pipes/phone-format.pipe';
 import { PhoneNumberFormatDirective } from './directives/phone.directive';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
 @NgModule({
     declarations: [
         PhoneFormatPipe,
-        PhoneNumberFormatDirective
+        PhoneNumberFormatDirective,
+        PaginatorComponent
     ],
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        MatPaginatorModule
     ],
     exports: [
         ReactiveFormsModule,
         FormsModule,
         CommonModule,
         PhoneFormatPipe,
-        PhoneNumberFormatDirective
+        PhoneNumberFormatDirective,
+        PaginatorComponent
+
     ]
 })
 export class SharedModule {}

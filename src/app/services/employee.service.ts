@@ -5,12 +5,13 @@ import {
   HttpParams,
   HttpResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
   mainApiUrl = environment.mainApiUrl;
+  updateEmployee$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient) {}
 

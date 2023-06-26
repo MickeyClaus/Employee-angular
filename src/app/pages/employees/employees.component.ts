@@ -16,6 +16,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class EmployeesComponent implements OnInit {
   divState: 'collapsed' | 'expanded' = 'expanded';
   hideIcon: boolean = false;
+  filteredData: any;
   toggleDivState() {
     this.divState = this.divState === 'collapsed' ? 'expanded' : 'collapsed';
   }
@@ -24,5 +25,13 @@ export class EmployeesComponent implements OnInit {
     if (window.screen.width < 768) { 
       this.hideIcon = true;
     }
+  }
+
+  receiveObject(obj: any) {
+    this.filteredData = obj;
+  }
+
+  event(){
+    alert('Не понял условие что надо загрузить в хранилище но для записи используется localStorage.setItem("item", item )')
   }
 }

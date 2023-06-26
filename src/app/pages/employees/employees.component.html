@@ -8,8 +8,8 @@
     <div class="title-buttons flex-sb-c mt-3 mb-3">
         <div class="flex-fs-c active-button-box">
             <button class="active--button flex-sb-c"><p>Добавить</p> <mat-icon *ngIf="!hideIcon">add_circle_outline</mat-icon></button>
-            <button class="active--button flex-sb-c"><p>Разблокировать</p> <mat-icon  *ngIf="!hideIcon">check_circle_outline</mat-icon></button>
-            <button class="active--button flex-sb-c"><p>Заблокировать</p> <mat-icon  *ngIf="!hideIcon">cancel_outline</mat-icon></button>
+            <button class="active--button flex-sb-c" (click)="event()"><p>Разблокировать</p> <mat-icon  *ngIf="!hideIcon">check_circle_outline</mat-icon></button>
+            <button class="active--button flex-sb-c" (click)="event()"><p>Заблокировать</p> <mat-icon  *ngIf="!hideIcon">cancel_outline</mat-icon></button>
           </div>
           <div class="filter-button">
             <button class="deactive--button flex-sb-c" (click)="toggleDivState()"><mat-icon  *ngIf="!hideIcon">filter_list</mat-icon>Фильтр</button>
@@ -18,11 +18,11 @@
 
 
     <div [@expandCollapse]="divState"  class="expandable filter-box mt-4 mb-4">
-      <app-filter></app-filter>
+      <app-filter (filterData)="receiveObject($event)"></app-filter>
     </div>
 
     <div class="table">
-      <app-table></app-table>
+      <app-table [filteredData]="filteredData"></app-table>
     </div>
   </div>
 </section>
